@@ -29,7 +29,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Versão Otimizada ⋆˚꩜｡')),
+      appBar: AppBar(
+      title: const Text('Versão Otimizada ⋆˚꩜｡'),
+      backgroundColor:Color.fromARGB(255, 255, 124, 168),
+      ),
       body: ListView(
         children: [
           ListTile(
