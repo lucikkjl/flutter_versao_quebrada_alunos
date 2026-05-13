@@ -1,44 +1,54 @@
 import 'package:flutter/material.dart';
-import 'pages/broken_list_page.dart';
-import 'pages/broken_grid_page.dart';
+import 'pages/optimized_list_page.dart';
+import 'pages/optimized_grid_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  int counter = 0;
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'App Otimizado',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.pink,
-        textTheme: TextTheme(bodyMedium: TextStyle(fontSize: 20)),
+        primaryColor: const Color.fromARGB(255, 255, 94, 148),
+        textTheme: const TextTheme(bodyMedium: TextStyle(fontSize: 20)),
       ),
-      home: Scaffold(
-        appBar: AppBar(title: Text('VERSÃO QUEBRADA 🔥')),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => setState(() => counter++),
-          child: Icon(Icons.refresh),
-        ),
-        body: ListView(
-          children: [
-            ListTile(
-              title: Text('Lista RUIM (Column + Scroll)'),
-              onTap: () => runApp(BrokenListPage()),
+      home: const HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Versão Otimizada ⋆˚꩜｡')),
+      body: ListView(
+        children: [
+          ListTile(
+            leading: const Icon(Icons.list, color: Color.fromARGB(255, 253, 77, 136)),
+            title: const Text('Lista Otimizada'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const OptimizedListPage()),
             ),
-            ListTile(
-              title: Text('Grid RUIM (sem builder)'),
-              onTap: () => runApp(BrokenGridPage()),
+          ),
+          ListTile(
+            leading: const Icon(Icons.grid_view, color: Color.fromARGB(255, 253, 77, 136)),
+            title: const Text('Grid Otimizado'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const OptimizedGridPage()),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
